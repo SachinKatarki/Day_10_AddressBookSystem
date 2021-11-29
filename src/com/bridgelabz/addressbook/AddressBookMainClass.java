@@ -88,5 +88,18 @@ public void displayContacts(AddressBook addressBook) {
 			System.out.println("No Conatct Details available :");
 		}
 	}
+ }
+public void deleteContactDetails(String name) {
+	List<Contacts> contactDetails = addressbook.getContacts();
+	for (int i = 0; i <= contactDetails.size() - 1; i++) {
+		Contacts contactperson = contactDetails.get(i);
+		if (contactperson.getFirstName().equals(name)) {
+			contactDetails.remove(i);
+			addressbook.setContacts(contactDetails);
+		}
+	}
+	System.out.println("Contact deleted Successfully");
+	addressbooks.displayContacts(addressbook);
+  }
+}
 
-}}
