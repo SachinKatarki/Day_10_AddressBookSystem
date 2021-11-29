@@ -13,7 +13,6 @@ public class Contacts {
 	public Contacts() {
 
 	}
-
 	public Contacts(String firstName, String lastName, String address, String city, String state, int zip,
 			long phoneNumber, String email) {
 		this.firstName = firstName;
@@ -91,4 +90,5 @@ public class Contacts {
 		this.email = email;
 	}
 
+	
 }
