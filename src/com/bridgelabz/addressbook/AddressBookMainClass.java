@@ -7,6 +7,7 @@ public class AddressBookMainClass {
 	private static Scanner sc = new Scanner(System.in);
 	private AddressBook addressbook = new AddressBook();
 	private List<Contacts> contacts = new ArrayList<>();
+	private AddressBookMainClass addressbooks;
 
 	public static void main(String[] args) {
 		System.out.println("Welcome to Address Book Program\n");
@@ -47,4 +48,45 @@ public class AddressBookMainClass {
 	
 	}
 
+  public void editContact(String name, String editFirstName, String editLastName, String editAddress, String editCity,
+		String editState, int editZip, long editPhoneNumber, String editEmail) {
+	List<Contacts> contactDetails = addressbook.getContacts();
+	for (int i = 0; i <= contactDetails.size() - 1; i++) {
+
+		Contacts contactperson = contactDetails.get(i);
+		if (contactperson.getFirstName().equals(name)) {
+
+			contactperson.setFirstName(editFirstName);
+			contactperson.setLastName(editLastName);
+			contactperson.setAddress(editAddress);
+			contactperson.setCity(editCity);
+			contactperson.setPhoneNumber(editPhoneNumber);
+			contactperson.setState(editState);
+			contactperson.setZip(editZip);
+			contactperson.setEmail(editEmail);
+			contactDetails.set(i, contactperson);
+			addressbook.setContacts(contactDetails);
+
+		}
+	}
+	addressbooks.displayContacts(addressbook);
 }
+
+public void displayContacts(AddressBook addressBook) {
+	List<Contacts> contactDetails = addressBook.getContacts();
+
+	for (int i = 0; i <= contactDetails.size() - 1; i++) {
+		Contacts contactperson = contactDetails.get(i);
+		if (!contactperson.getFirstName().equals("")) {
+			System.out.println("Conatct Details :");
+			System.out.println("FirstName :" + contactperson.getFirstName() + "      LastName :"
+					+ contactperson.getLastName() + "     Address :" + contactperson.getAddress() + "      City :"
+					+ contactperson.getCity() + "       State :" + contactperson.getState() + "     Zip :"
+					+ contactperson.getZip() + "     Phone Number :" + contactperson.getPhoneNumber());
+		} else {
+
+			System.out.println("No Conatct Details available :");
+		}
+	}
+
+}}
